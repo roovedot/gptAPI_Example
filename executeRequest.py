@@ -17,10 +17,12 @@ def generar_receta(ingredientes):
     prompt = (
         "Teniendo en cuenta los siguientes ingredientes: "
         f"{', '.join(ingredientes)}, sugiéreme una receta. "
-        "No es necesario usar todos los ingredientes, pero puedes incluir especias básicas, azúcar, sal, aceite, harina, cebolla o ajo, u otros ingredientes comunes. "
-        "Proporciona la receta con las cantidades necesarias por persona, y asegúrate de que los ingredientes y los pasos no se repitan. "
-        "Por favor, limita la respuesta a una receta clara y concisa, sin repeticiones innecesarias."
-        "Al final, agrega un consejo extra para mejorar la preparación, presentación o el sabor del platillo."
+        "No es necesario usar todos los ingredientes." 
+        "Puedes incluir especias básicas, azúcar, sal, aceite, harina, cebolla o ajo, u otros ingredientes comunes. "
+        "Proporciona la receta con las cantidades necesarias por persona. "
+        "Explica los pasos para la elaboración de manera clara y concisa."
+        "Limítate a: Título, Ingredientes, preparación y consejo extra"
+        "Al final, agrega un consejo extra para mejorar la preparación, presentación o el sabor del plato."
     )
 
 
@@ -35,7 +37,7 @@ def generar_receta(ingredientes):
                 "content": prompt,
             },
             ],
-            max_tokens=500,  # Ajusta según la cantidad de respuesta que esperes
+            max_tokens=600,  # Ajusta según la cantidad de respuesta que esperes
             temperature=0.7
         )
         #si no ha saltado ningun error:
