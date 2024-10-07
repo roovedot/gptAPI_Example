@@ -17,7 +17,7 @@ def generar_receta(ingredientes):
     prompt = (
         "Teniendo en cuenta los siguientes ingredientes: "
         f"{', '.join(ingredientes)}, sugiéreme una receta. "
-        "No es necesario usar todos los ingredientes, pero puedes incluir especias básicas, azúcar, sal, aceite, harina u otros ingredientes comunes. "
+        "No es necesario usar todos los ingredientes, pero puedes incluir especias básicas, azúcar, sal, aceite, harina, cebolla o ajo, u otros ingredientes comunes. "
         "Proporciona la receta con las cantidades necesarias por persona, y asegúrate de que los ingredientes y los pasos no se repitan. "
         "Por favor, limita la respuesta a una receta clara y concisa, sin repeticiones innecesarias."
         "Al final, agrega un consejo extra para mejorar la preparación, presentación o el sabor del platillo."
@@ -52,14 +52,17 @@ def generar_receta(ingredientes):
 if __name__ == "__main__":
     # Lista de ingredientes que tienes disponibles
     ingredientes = [
-    "pollo", 
-    "tomates", 
-    "ajo", 
-    "cebolla", 
-    "aceite de oliva", 
-    "pimienta", 
-    "sal", 
-    "papas"
+    "Tomate Frito",
+    "Leche entera Hacendado",
+    "Manzanas",
+    "Cebolla",
+    "Carne picada Vacuno 500gr",
+    "Aceite de oliva",
+    "Pechga de pollo 380gr",
+    "Pimiento rojo",
+    "Queso Philadelphia",
+    "Arroz gordo 1kg",
+    "Queso Rallado Mozzarela 300gr"
     ]
     
     # Generar la receta
@@ -79,6 +82,7 @@ if __name__ == "__main__":
     print('\n///////////////////////////////////////////////////////////////////\n')
     
     print("TEXTO GENERADO:")
-    print(response.choices[0].message.content)
+    texto = response.choices[0].message.content
+    print(texto)
 
     print('\n///////////////////////////////////////////////////////////////////')
