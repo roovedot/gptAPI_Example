@@ -15,14 +15,8 @@ client = OpenAI(
 def generar_receta(ingredientes):
     # Preparamos el prompt para enviar a GPT
     prompt = (
-        "Teniendo en cuenta los siguientes ingredientes: "
-        f"{', '.join(ingredientes)}, sugiéreme una receta. "
-        "No es necesario usar todos los ingredientes." 
-        "Puedes incluir especias básicas, azúcar, sal, aceite, harina, cebolla o ajo, u otros ingredientes comunes. "
-        "Proporciona la receta con las cantidades necesarias por persona. "
-        "Explica los pasos para la elaboración de manera clara y concisa."
-        "Limítate a: Título, Ingredientes, preparación y consejo extra"
-        "Al final, agrega un consejo extra para mejorar la preparación, presentación o el sabor del plato."
+        "Qué puedo hacer con: "
+        f"{', '.join(ingredientes)}"
     )
 
 
@@ -30,15 +24,15 @@ def generar_receta(ingredientes):
     try:
         print("Llamando a API...")
         response = client.chat.completions.create(
-            model="chatgpt-4o-latest",  # Ver modelos -> https://openai.com/api/pricing/
+            model="ft:gpt-4o-mini-2024-07-18:personal:recetas:AKk7Noeo",  # Ver modelos -> https://openai.com/api/pricing/
             messages=[
                 {
                 "role": "user",
                 "content": prompt,
             },
             ],
-            max_tokens=600,  # Ajusta según la cantidad de respuesta que esperes
-            temperature=0.7
+            #max_tokens=600,  # Ajusta según la cantidad de respuesta que esperes
+            temperature=0.5
         )
         #si no ha saltado ningun error:
         print("Respuesta exitosa de la API")
@@ -73,20 +67,39 @@ if __name__ == "__main__":
 
     ############################# TEXTO RECETA ###################################
 
-    '''
+    
     # Lista de ingredientes que tienes disponibles
     ingredientes = [
-    "Tomate Frito",
-    "Leche entera Hacendado",
-    "Manzanas",
-    "Cebolla",
-    "Carne picada Vacuno 500gr",
-    "Aceite de oliva",
-    "Pechga de pollo 380gr",
-    "Pimiento rojo",
-    "Queso Philadelphia",
-    "Arroz gordo 1kg",
-    "Queso Rallado Mozzarela 300gr"
+    "Aceite de Girasol Koipesol 1L",
+    "Sal Gorda Hacendado 1kg",
+    "Azúcar Blanco Hacendado 1kg",
+    "Pimienta Blanca Molida Hacendado 50g",
+    "Ajo Seco Hacendado 300g",
+    "Cebolla Roja 1kg",
+    "Calabaza Troceada Hacendado 500g",
+    "Brócoli Fresco 500g",
+    "Pimiento Amarillo 500g",
+    "Pepino Nacional 1kg",
+    "Tomate Cherry Hacendado 250g",
+    "Tomate Frito Hacendado 400g",
+    "Lechuga Romana 1 unidad",
+    "Rúcula Fresca Hacendado 100g",
+    "Cilantro Fresco Hacendado 25g",
+    "Champiñones Enteros Hacendado 400g",
+    "Garbanzos Secos Hacendado 500g",
+    "Judías Blancas Cocidas Hacendado 400g",
+    "Cuscús Hacendado 500g",
+    "Pasta Farfalle Gallo 500g",
+    "Fideos Finos Nº1 Hacendado 500g",
+    "Harina Integral Hacendado 1kg",
+    "Leche Semidesnatada Hacendado 1L",
+    "Nata para Montar Hacendado 200ml",
+    "Queso Manchego Curado Hacendado 150g",
+    "Queso Cheddar Lonchas Hacendado 200g",
+    "Queso Azul Hacendado 100g",
+    "Muslos de Pollo Hacendado 1kg",
+    "Solomillo de Cerdo Hacendado 500g",
+    "Sardinas en Aceite de Oliva Hacendado Pack 3x85g"
     ]
     
     # Generar la receta
@@ -110,7 +123,7 @@ if __name__ == "__main__":
     print(texto)
 
     print('\n///////////////////////////////////////////////////////////////////')
-    '''
+    
 
     ############################# IMAGEN RECETA ###################################
     '''
@@ -118,16 +131,3 @@ if __name__ == "__main__":
     print("imagen_url: ", imagen_response.data[0].url)
     print("respuesta completa: ", imagen_response.__dict__)
     '''
-    print([
-    "Tomate Frito",
-    "Leche entera Hacendado",
-    "Manzanas",
-    "Cebolla",
-    "Carne picada Vacuno 500gr",
-    "Aceite de oliva",
-    "Pechga de pollo 380gr",
-    "Pimiento rojo",
-    "Queso Philadelphia",
-    "Arroz gordo 1kg",
-    "Queso Rallado Mozzarela 300gr"
-    ])
